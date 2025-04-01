@@ -34,24 +34,26 @@ export default function Home() {
         </div>
 
         {/* AGENDAMENTOS */}
-        <Card className="mt-6">
-          <CardContent className="flex justify-between">
+        <Card className="mt-6 flex items-center justify-center">
+          <CardContent className="flex gap-10 justify-between">
             {/* ESQUERDA */}
-            <div className="flex flex-col py-5">
+            <div className="flex flex-col py-5 pt-6">
               <Badge className="w-fit">Confirmado</Badge>
-              <h3>Corte de Cabelo</h3>
+              <h3 className="pt-3">Corte de Cabelo</h3>
 
               <div className="flex items-center gap-2">
-                <Avatar className="h-6 w-6">
+                <Avatar className="h-6 w-6 mt-3">
                     <AvatarImage src="http://github.com/srodrigo28.png" />
                 </Avatar>
-                <p className="text-slate-500 text-xl">Barbearia Treina-DEV</p>
+                <p className="text-slate-500 text-md">Barbearia Treina-DEV</p>
               </div>
             </div>
-            <div>
-              <p>Agosto</p>
-            </div>
             {/* DIREITA*/}
+            <div className="flex flex-col items-center justify-around pt-5 border-l-2 border-solid px-5">
+              <p className="text-sm">Agosto</p>
+              <p className="text-3xl">05</p>
+              <p className="text-sm">20:00</p>
+            </div>
           </CardContent>
         </Card>
       </div>

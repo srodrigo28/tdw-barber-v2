@@ -5,7 +5,7 @@ import { Button } from "./ui/button"
 
 const Header = () => {
     return(
-        <Card className="w-screen">
+        <Card className="w-screen border-b-2 border-solid">
             <CardContent className="flex flex-row items-center justify-between p-5">
                 <Image src="/logo.png" alt="tdw logo" height={18} width={120} />
                 <Button variant="outline" size="icon">
