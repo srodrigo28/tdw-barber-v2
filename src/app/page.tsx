@@ -35,22 +35,22 @@ export default function Home() {
 
         {/* AGENDAMENTOS */}
         <Card className="mt-6 flex items-center justify-center">
-          <CardContent className="flex gap-10 justify-between">
+          <CardContent className="flex gap-10 justify-between items-center">
             {/* ESQUERDA */}
-            <div className="flex flex-col py-5 pt-6">
-              <Badge className="w-fit">Confirmado</Badge>
-              <h3 className="pt-3">Corte de Cabelo</h3>
+            <div className="flex flex-col ">
+              <Badge className="w-fit mt-6">Confirmado</Badge>
+              <h3>Corte de Cabelo</h3>
 
               <div className="flex items-center gap-2">
-                <Avatar className="h-6 w-6 mt-3">
+                <Avatar className="h-6 w-6">
                     <AvatarImage src="http://github.com/srodrigo28.png" />
                 </Avatar>
                 <p className="text-slate-500 text-md">Barbearia Treina-DEV</p>
               </div>
             </div>
             {/* DIREITA*/}
-            <div className="flex flex-col items-center justify-around pt-5 border-l-2 border-solid px-5">
-              <p className="text-sm">Agosto</p>
+            <div className="flex flex-col items-center mt-6">
+              <p className="text-sm pl-3">Agosto</p>
               <p className="text-3xl">05</p>
               <p className="text-sm">20:00</p>
             </div>
