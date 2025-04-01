@@ -66,7 +66,7 @@ npx shadcn@latest add button
 
 #### Ref.
 ```ultimo visto
-https://alunos.fullstackclub.com.br/area/produto/item/3676526
+https://alunos.fullstackclub.com.br/area/produto/item/3676529
 ```
 
 ```github
