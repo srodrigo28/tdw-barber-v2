@@ -65,6 +65,10 @@ npx shadcn@latest add button
 ```
 
 #### Ref.
+```ultimo visto
+https://alunos.fullstackclub.com.br/area/produto/item/3676526
+```
+
 ```github
 https://github.com/felipemotarocha/fullstackweek-barber-v2
 ```
