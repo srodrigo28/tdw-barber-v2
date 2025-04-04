@@ -13,6 +13,11 @@ import Image from "next/image";
 const Home = async () => {
   // chama menu banco de dados
   const barbershops = await db.barbershop.findMany({});
+  const popularBarbershops = await db.barbershop.findMany({ // condicional de filtro
+    orderBy: { 
+      name: "asc" 
+    },
+  })
   // console.log({ barbershops });
   return (
     <div className="flex flex-col h-screen">
@@ -96,7 +101,7 @@ const Home = async () => {
 
         {/** AREA DE SCROLL */}
         <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
-          {barbershops.map((barbershop) => (
+          {popularBarbershops.map((barbershop) => (
             <BarbershopItem key={barbershop.id} barbershop={barbershop} />
           ))}
         </div>
