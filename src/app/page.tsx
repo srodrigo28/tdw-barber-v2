@@ -1,14 +1,19 @@
+import BarbershopItem from "@/components/barbershop-item";
 import Header from "@/components/header";
 import { Avatar } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { db } from "@/lib/prisma";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { SearchIcon } from "lucide-react";
 import Image from "next/image";
 
-export default function Home() {
+const Home = async () => {
+  // chama menu banco de dados
+  const barbershops = await db.barbershop.findMany({});
+  // console.log({ barbershops });
   return (
     <div className="flex flex-col h-screen">
       {/* header */}
@@ -16,24 +21,43 @@ export default function Home() {
 
       {/* MAIN */}
       <div className="p-5">
-        <h2 className="text-2xl mb-2">Olá, <span className="text-violet-500">João Silva</span></h2>
-        <p className="text-slate-400">Terça-feira, 01 de abril.</p>
-        
+        <h2 className="text-2xl mb-2">
+          Olá, <span className="text-violet-500">João Silva</span>
+        </h2>
+        <p className="text-slate-400">Sexta-feira, 04 de abril.</p>
+
         {/* BUSCA */}
         <div className="flex items-center gap-2 mt-6">
           <Input placeholder="Faça sua busca" />
-          <Button size="icon"> <SearchIcon /> </Button>
+          <Button size="icon">
+            {" "}
+            <SearchIcon />{" "}
+          </Button>
         </div>
-        
+
         <div className="flex gap-2 justify-center mt-5">
-          <Button size="icon" className="w-24"> <SearchIcon /> Cabelo </Button>
-          <Button size="icon" className="w-24"> <SearchIcon /> Barba </Button>
-          <Button size="icon" className="w-44"> <SearchIcon /> Acabamento </Button>
+          <Button size="icon" className="w-24">
+            {" "}
+            <SearchIcon /> Cabelo{" "}
+          </Button>
+          <Button size="icon" className="w-24">
+            {" "}
+            <SearchIcon /> Barba{" "}
+          </Button>
+          <Button size="icon" className="w-44">
+            {" "}
+            <SearchIcon /> Acabamento{" "}
+          </Button>
         </div>
 
         {/* imagem */}
         <div className="relative w-full h-[150px] mt-5 rounded-md">
-        <Image src="/banner-01.png"  alt="Agende seu horário" fill className="object-cover rounded-md" />
+          <Image
+            src="/banner-01.png"
+            alt="Agende seu horário"
+            fill
+            className="object-cover rounded-md"
+          />
         </div>
 
         {/* AGENDAMENTOS */}
@@ -50,7 +74,7 @@ export default function Home() {
 
               <div className="flex items-center gap-2">
                 <Avatar className="h-6 w-6">
-                    <AvatarImage src="http://github.com/srodrigo28.png" />
+                  <AvatarImage src="http://github.com/srodrigo28.png" />
                 </Avatar>
                 <p className="text-slate-500 text-md">Barbearia Treina-DEV</p>
               </div>
@@ -64,7 +88,21 @@ export default function Home() {
             </div>
           </CardContent>
         </Card>
+
+        {/* AGENDAMENTOS */}
+        <h2 className="mt-6 text-sm font-bold uppercase text-gray-500 tracking-wider">
+          Recomendados
+        </h2>
+
+        {/** AREA DE SCROLL */}
+        <div className="flex gap-4 overflow-auto [&::-webkit-scrollbar]:hidden">
+          {barbershops.map((barbershop) => (
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default Home;
