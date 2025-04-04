@@ -30,7 +30,7 @@ const Home = async () => {
   });
   // console.log({ barbershops });
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen md:w-96 mx-auto">
       {/* header */}
       <Header />
 
