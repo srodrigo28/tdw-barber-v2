@@ -7,17 +7,26 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { db } from "@/lib/prisma";
 import { AvatarImage } from "@radix-ui/react-avatar";
-import { EyeIcon, FootprintsIcon, SearchIcon } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import Image from "next/image";
 
+interface QuickSearchOption {
+  imageUrl: string;
+  title: string;
+}
+
 const Home = async () => {
-  // chama menu banco de dados
+  const quickSearchOptions: QuickSearchOption[] = [
+    { imageUrl: "/acabamento.svg", title: "Acabamento" },
+    { imageUrl: "/barba.svg", title: "Barba" },
+    { imageUrl: "/cabelo.svg", title: "Cabelo" },
+    { imageUrl: "/hidratacao.svg", title: "Hidratacao" },
+    { imageUrl: "/sobrancelha.svg", title: "Sobrancelha" },
+  ];
   // const barbershops = await db.barbershop.findMany({});
   const popularBarbershops = await db.barbershop.findMany({
     // condicional de filtro
-    orderBy: {
-      name: "asc",
-    },
+    orderBy: { name: "asc" },
   });
   // console.log({ barbershops });
   return (
@@ -42,25 +51,17 @@ const Home = async () => {
 
         {/* BOTÕES BUSCA RÁPIDA */}
         <div className="mt-6 flex gap-3 overflow-x-scroll [&::-webkit-scrollbar]:hidden">
-          <Button size="icon" className="w-fit px-3">
-            <Image src="/cabelo.svg" alt="cabelo" width={16} height={16} />{" "}
-            Cabelo
-          </Button>
-          <Button size="icon" className="w-fit px-3">
-            <Image src="/barba.svg" alt="barba" width={16} height={16} /> Barba
-          </Button>
-          <Button size="icon" className="w-fit px-3">
-            <Image src="/acabamento.svg" alt="acabamento" width={16} height={16} />
-            Acabamento
-          </Button>
-          <Button size="icon" className="w-fit px-3">
-            <FootprintsIcon size={16} />
-            Pezinho
-          </Button>
-          <Button size="icon" className="w-fit px-3">
-            <EyeIcon size={16} />
-            Sobrancelha
-          </Button>
+          {quickSearchOptions.map((option) => (
+            <Button key={option.title} size="icon" className="w-fit px-3">
+              <Image
+                src={option.imageUrl}
+                alt={option.title}
+                width={16}
+                height={16}
+              />{" "}
+              {option.title}
+            </Button>
+          ))}
         </div>
 
         {/* imagem BANNER */}
