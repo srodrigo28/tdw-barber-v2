@@ -14,10 +14,12 @@ export default function Home() {
       {/* header */}
       <Header />
 
+      {/* MAIN */}
       <div className="p-5">
         <h2 className="text-2xl mb-2">Olá, <span className="text-violet-500">João Silva</span></h2>
         <p className="text-slate-400">Terça-feira, 01 de abril.</p>
         
+        {/* BUSCA */}
         <div className="flex items-center gap-2 mt-6">
           <Input placeholder="Faça sua busca" />
           <Button size="icon"> <SearchIcon /> </Button>
@@ -29,17 +31,22 @@ export default function Home() {
           <Button size="icon" className="w-44"> <SearchIcon /> Acabamento </Button>
         </div>
 
+        {/* imagem */}
         <div className="relative w-full h-[150px] mt-5 rounded-md">
         <Image src="/banner-01.png"  alt="Agende seu horário" fill className="object-cover rounded-md" />
         </div>
 
         {/* AGENDAMENTOS */}
-        <Card className="mt-6 flex items-center justify-center">
-          <CardContent className="flex gap-10 justify-between items-center">
+        <h2 className="mt-6 text-sm font-bold uppercase text-gray-500 tracking-wider">
+          Agendamentos
+        </h2>
+
+        <Card className="mt-2 h-32">
+          <CardContent className="flex justify-between items-center">
             {/* ESQUERDA */}
-            <div className="flex flex-col ">
-              <Badge className="w-fit mt-6">Confirmado</Badge>
-              <h3>Corte de Cabelo</h3>
+            <div className="flex gap-2 flex-col py-5">
+              <Badge className="w-fit tracking-wider">Confirmado</Badge>
+              <h3 className="font-semibold">Corte de Cabelo</h3>
 
               <div className="flex items-center gap-2">
                 <Avatar className="h-6 w-6">
@@ -48,11 +55,12 @@ export default function Home() {
                 <p className="text-slate-500 text-md">Barbearia Treina-DEV</p>
               </div>
             </div>
+
             {/* DIREITA*/}
-            <div className="flex flex-col items-center mt-6">
-              <p className="text-sm pl-3">Agosto</p>
-              <p className="text-3xl">05</p>
-              <p className="text-sm">20:00</p>
+            <div className="flex gap-2 flex-col items-center border-l-2 pl-3">
+              <p className="text-sm pl-3">Abril</p>
+              <p className="text-3xl">04</p>
+              <p className="text-sm pl-3">12:00</p>
             </div>
           </CardContent>
         </Card>
